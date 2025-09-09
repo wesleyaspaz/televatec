@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Televatec - A Missão</title>
+    <meta name="description" content="Embarque em uma jornada interativa para descobrir as soluções de IA e Infraestrutura da Televatec.">
+    
+    <!-- Tailwind CSS para estilização rápida -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes do Google (Inter para texto e Roboto Mono para títulos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Fundo escuro */
+            color: #e5e7eb; /* Texto claro */
+            overflow: hidden; /* Previne a rolagem da página inteira, a animação controla a visão */
+        }
+        .mission-title {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .game-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        .game-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+        }
+        .card-bg {
+            background-color: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chat-bubble {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            transition: all 0.2s ease-in-out;
+        }
+        .chat-bubble:hover {
+            background-color: #374151;
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        /* --- LÓGICA DE TRANSIÇÃO DOS NÍVEIS --- */
+        .level {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+            overflow-y: auto; /* Permite rolagem dentro de um nível, se necessário */
+            padding: 2rem;
+        }
+        .level-up {
+            transform: translateY(-100%); /* Sobe para fora da tela */
+        }
+        .level-down {
+            transform: translateY(100%); /* Começa abaixo da tela */
+        }
+        
+        /* --- ELEVADOR DE PROGRESSO (NAVEGAÇÃO LATERAL) --- */
+        #progress-elevator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+        }
+        .progress-floor {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #374151;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        .progress-floor.active {
+            background-color: #38bdf8;
+            transform: scale(1.5);
+            box-shadow: 0 0 15px #38bdf8;
+        }
+        .progress-floor .floor-label {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+        .progress-floor.active .floor-label {
+            opacity: 1;
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Elevador de Progresso (Navegação) -->
+    <aside id="progress-elevator">
+        <div class="progress-floor" data-level="0"><span class="floor-label">Início</span></div>
+        <div class="progress-floor" data-level="1"><span class="floor-label">Serviços</span></div>
+        <div class="progress-floor" data-level="2"><span class="floor-label">Tecnologias</span></div>
+        <div class="progress-floor" data-level="3"><span class="floor-label">Filosofia</span></div>
+        <div class="progress-floor" data-level="4"><span class="floor-label">Contato</span></div>
+    </aside>
+
+    <!-- NÍVEL 0: INTRODUÇÃO -->
+    <div id="level-0" class="level">
+        <div class="text-center p-6">
+            <h1 class="mission-title text-4xl md:text-6xl font-extrabold text-white mb-4">
+                <span class="gradient-text">MISSÃO:</span> TELEVATEC
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-10">
+                Sua jornada para dominar a IA e a Infraestrutura Local começa agora. Desça pelos níveis de nossa expertise para descobrir seu potencial.
+            </p>
+            <button onclick="goToLevel(1)" class="game-button bg-sky-500 text-white font-bold px-8 py-4 rounded-lg text-lg">
+                INICIAR MISSÃO
+            </button>
+        </div>
+    </div>
+
+    <!-- NÍVEL 1: SERVIÇOS -->
+    <div id="level-1" class="level level-down">
+        <div class="text-center p-6 max-w-6xl w-full">
+            <h2 class="mission-title text-3xl md:text-4xl font-bold text-white mb-2">NÍVEL 01: ESCOLHA SUA ESPECIALIZAÇÃO</h2>
+            <p class="text-gray-400 mb-10">Qual pilar da inovação você deseja fortalecer primeiro?</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="card-bg rounded-2xl p-8 text-left">
+                    <h3 class="text-2xl font-bold text-white mb-3">IA Generativa e DevOps</h3>
+                    <p class="text-gray-400 mb-6">Mergulhe na criação de conteúdo multimodal, automação de workflows e ambientes de desenvolvimento modernos.</p>
+                    <button onclick="revealServices('ia-devops', this)" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition-colors">Explorar IA e DevOps</button>
+                </div>
+                <div class="card-bg rounded-2xl p-8 text-left">
+                    <h3 class="text-2xl font-bold text-white mb-3">Infraestrutura e Software</h3>
+                    <p class="text-gray-400 mb-6">Construa a base sólida do seu projeto com automação, virtualização e desenvolvimento de software sob medida.</p>
+                     <button onclick="revealServices('infra-software', this)" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition-colors">Explorar Infra e Software</button>
+                </div>
+            </div>
+            <!-- Detalhes dos serviços aparecerão aqui após a escolha -->
+            <div id="services-details" class="hidden opacity-0 transition-opacity duration-700"></div>
+             <button onclick="goToLevel(2)" id="level-1-continue" class="hidden mt-8 game-button bg-sky-500 text-white font-bold px-8 py-4 rounded-lg text-lg">
+                PROSSEGUIR
+            </button>
+        </div>
+    </div>
+
+    <!-- NÍVEL 2: TECNOLOGIAS -->
+    <div id="level-2" class="level level-down">
+         <div class="text-center p-6 max-w-4xl">
+            <h2 class="mission-title text-3xl md:text-4xl font-bold text-white mb-2">NÍVEL 02: ARSENAL TECNOLÓGICO</h2>
+            <p class="text-gray-400 mb-10">Estas são as ferramentas que usamos para construir o futuro.</p>
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-10">
+                <span class="text-lg font-medium text-gray-300">Terraform</span>
+                <span class="text-lg font-medium text-gray-300">Ansible</span>
+                <span class="text-lg font-medium text-gray-300">Proxmox</span>
+                <span class="text-lg font-medium text-gray-300">GitLab</span>
+                <span class="text-lg font-medium text-gray-300">ComfyUI</span>
+                <span class="text-lg font-medium text-gray-300">WAN 2.2</span>
+                <span class="text-lg font-medium text-gray-300">n8n</span>
+                <span class="text-lg font-medium text-gray-300">Ollama API</span>
+                <span class="text-lg font-medium text-gray-300">Cursor</span>
+                <span class="text-lg font-medium text-gray-300">Guacamole</span>
+                <span class="text-lg font-medium text-gray-300">Cloudflare</span>
+            </div>
+             <button onclick="goToLevel(3)" class="mt-12 game-button bg-sky-500 text-white font-bold px-8 py-4 rounded-lg text-lg">
+                ENTENDIDO
+            </button>
+        </div>
+    </div>
+
+    <!-- NÍVEL 3: FILOSOFIA (SOBRE) -->
+    <div id="level-3" class="level level-down">
+         <div class="text-center p-6 max-w-4xl">
+            <h2 class="mission-title text-3xl md:text-4xl font-bold text-white mb-2">NÍVEL 03: NOSSA FILOSOFIA</h2>
+             <p class="text-lg text-gray-300 leading-relaxed mt-4">
+                Na Televatec, acreditamos que o futuro da inovação está na autonomia. Nossa missão é desmistificar tecnologias complexas e dar às empresas o poder de criar soluções de IA em seus próprios termos e infraestrutura. Reduzimos a dependência de nuvens caras, aumentamos a segurança e capacitamos equipes a inovar com mais rapidez e liberdade.
+            </p>
+             <button onclick="goToLevel(4)" class="mt-12 game-button bg-sky-500 text-white font-bold px-8 py-4 rounded-lg text-lg">
+                CHEGAR AO NÚCLEO
+            </button>
+        </div>
+    </div>
+
+    <!-- NÍVEL 4: CONTATO -->
+    <div id="level-4" class="level level-down">
+         <div class="text-center p-6 max-w-2xl w-full">
+            <h2 class="mission-title text-3xl md:text-4xl font-bold text-white mb-2">MISSÃO CUMPRIDA</h2>
+            <p class="text-gray-400 mt-2 mb-8">Você chegou ao núcleo. Para dar o próximo passo, inicie uma conversa com nosso assistente de IA. <br> Fale com o consultor: <b class="text-gray-200">Wesley Paz</b>.</p>
+            
+            <div class="w-full space-y-4 text-left">
+                <!-- Botões que iniciam a conversa com o bot com perguntas prontas -->
+                <button onclick="startConversation('Como posso ter um site estático para meu portfólio?')" class="w-full p-4 rounded-lg chat-bubble">
+                    <p class="font-semibold text-white">Preciso de um site para meu portfólio</p>
+                    <p class="text-sm text-gray-400">Ideal para freelancers e profissionais criativos.</p>
+                </button>
+                <button onclick="startConversation('Quais soluções de automação vocês oferecem para pequenos negócios?')" class="w-full p-4 rounded-lg chat-bubble">
+                    <p class="font-semibold text-white">Quero automatizar tarefas do meu negócio</p>
+                    <p class="text-sm text-gray-400">Otimize processos e ganhe produtividade.</p>
+                </button>
+                 <button onclick="startConversation('Quero entender como a IA pode me ajudar. Por onde começo?')" class="w-full p-4 rounded-lg chat-bubble">
+                    <p class="font-semibold text-white">Explique como a IA pode me ajudar</p>
+                    <p class="text-sm text-gray-400">Um ponto de partida para entender o potencial da IA.</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Componente do Chatbot (Dialogflow Messenger) -->
+    <!-- Ele carrega o bot na página -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+        intent="WELCOME"
+        chat-title="Televatec-Chat"
+        agent-id="[COLE SEU AGENT-ID AQUI]" <!-- !!! IMPORTANTE: Substitua pelo seu ID de Agente do Dialogflow !!! -->
+        language-code="pt-br"
+    ></df-messenger>
+
+    <!-- TODO O JAVASCRIPT DO JOGO -->
+    <script>
+        let currentLevel = 0;
+        const totalLevels = 5;
+        const levels = document.querySelectorAll('.level');
+        const progressFloors = document.querySelectorAll('.progress-floor');
+
+        // Conteúdo dinâmico para o Nível 1
+        const servicesData = {
+            "ia-devops": `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div><h4 class="font-bold text-sky-400">IA Generativa Multimodal</h4><p class="text-gray-400 text-sm">Produção de conteúdo, incluindo texto, imagens, vídeos e automação de workflows.</p></div>
+                    <div><h4 class="font-bold text-sky-400">Ambiente DevOps Moderno</h4><p class="text-gray-400 text-sm">Estrutura de CI/CD com GitLab e produtividade com editores assistidos por IA.</p></div>
+                </div>`,
+            "infra-software": `
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div><h4 class="font-bold text-sky-400">Infraestrutura e Automação</h4><p class="text-gray-400 text-sm">IaC com Terraform, automação com Ansible, virtualização com Proxmox e suporte N3.</p></div>
+                    <div><h4 class="font-bold text-sky-400">Análise e Desenvolvimento</h4><p class="text-gray-400 text-sm">Análise de requisitos, modelagem UML, prototipagem e desenvolvimento em Python.</p></div>
+                </div>`
+        };
+
+        // Atualiza a bolinha ativa no "elevador" de progresso
+        function updateProgress() {
+            progressFloors.forEach((floor, index) => {
+                if (index === currentLevel) {
+                    floor.classList.add('active');
+                } else {
+                    floor.classList.remove('active');
+                }
+            });
+        }
+
+        // Função principal que controla a transição entre os níveis
+        function goToLevel(levelIndex) {
+            if (levelIndex < 0 || levelIndex >= totalLevels) return;
+
+            const currentLevelEl = document.getElementById(`level-${currentLevel}`);
+            const nextLevelEl = document.getElementById(`level-${levelIndex}`);
+            
+            // Anima o nível atual para cima (para fora da tela)
+            currentLevelEl.classList.add('level-up');
+            // Traz o próximo nível para a tela (removendo a classe que o escondia embaixo)
+            nextLevelEl.classList.remove('level-down');
+            
+            currentLevel = levelIndex;
+            updateProgress();
+        }
+        
+        // Mostra os detalhes dos serviços no Nível 1
+        function revealServices(category, button) {
+            const detailsContainer = document.getElementById('services-details');
+            const continueButton = document.getElementById('level-1-continue');
+            
+            detailsContainer.innerHTML = servicesData[category];
+            detailsContainer.classList.remove('hidden');
+            setTimeout(() => detailsContainer.classList.remove('opacity-0'), 50);
+
+            continueButton.classList.remove('hidden');
+
+            // Desativa os botões de escolha para evitar nova seleção
+            document.querySelectorAll('#level-1 button').forEach(btn => {
+                if(btn.id !== 'level-1-continue') {
+                    btn.disabled = true;
+                    btn.classList.add('bg-gray-700', 'cursor-not-allowed');
+                }
+            });
+
+            // Destaca o botão que foi selecionado
+            button.classList.remove('bg-gray-700');
+            button.classList.add('bg-sky-500');
+        }
+
+        // Abre o chat do Dialogflow e envia uma pergunta inicial
+        function startConversation(query) {
+            const dfMessenger = document.querySelector('df-messenger');
+            if (!dfMessenger) return;
+            
+            dfMessenger.open();
+            // Um pequeno delay para garantir que a janela do chat abriu antes de enviar a mensagem
+            setTimeout(() => {
+                 dfMessenger.sendRequest('query', query);
+            }, 100);
+        }
+
+        // Função que roda quando a página é carregada
+        window.onload = () => {
+            updateProgress();
+            // Garante que o nível inicial esteja visível
+            document.getElementById('level-0').classList.remove('level-up', 'level-down');
+        };
+    </script>
+</body>
+</html>
