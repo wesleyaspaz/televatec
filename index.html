@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Televatec - Consultoria em IA e Desenvolvimento Local</title>
+    <meta name="description" content="Capacitamos sua empresa com ambientes de desenvolvimento locais e soluções de IA de ponta. Domine ferramentas como ComfyUI, Ollama, Proxmox e GitLab.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Fundo principal quase preto */
+            color: #e5e7eb; /* Cor de texto padrão (cinza claro) */
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .section-glow {
+            background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.1), transparent 40%);
+        }
+        .card-bg {
+            background-color: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter gradient-text">
+                Televatec
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#services" class="text-gray-300 hover:text-sky-400 transition-colors duration-300">Serviços</a>
+                <a href="#tech" class="text-gray-300 hover:text-sky-400 transition-colors duration-300">Tecnologias</a>
+                <a href="#about" class="text-gray-300 hover:text-sky-400 transition-colors duration-300">Sobre</a>
+                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition-colors duration-300">Contato</a>
+            </nav>
+            <a href="#contact" class="hidden md:block bg-sky-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-sky-600 transition-all duration-300 shadow-lg shadow-sky-500/20">
+                Fale Conosco
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#services" class="block py-2 text-gray-300 hover:text-sky-400">Serviços</a>
+            <a href="#tech" class="block py-2 text-gray-300 hover:text-sky-400">Tecnologias</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-sky-400">Sobre</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-sky-400">Contato</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 md:pt-48 md:pb-32 text-center relative overflow-hidden section-glow">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                    Capacite sua Empresa com <span class="gradient-text">IA e Infraestrutura Local</span>
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
+                    A Televatec ajuda seu time a construir, hospedar e escalar produtos de IA com total controle, segurança e autonomia, utilizando as melhores ferramentas open-source.
+                </p>
+                <a href="#services" class="bg-sky-500 text-white font-bold px-8 py-4 rounded-lg hover:bg-sky-600 transition-all duration-300 shadow-2xl shadow-sky-500/30 text-lg">
+                    Conheça Nossas Soluções
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos Serviços de Consultoria</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Soluções completas para levar seu desenvolvimento a um novo patamar.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="card-bg rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-gray-800 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Automação e IA Generativa</h3>
+                        <p class="text-gray-400">
+                            Ensinamos sua equipe a criar e gerenciar produtos de IA com ferramentas como <b class="text-gray-200">ComfyUI</b> para geração de imagens, <b class="text-gray-200">Ollama API</b> para LLMs locais, e <b class="text-gray-200">n8n</b> para automatizar workflows complexos.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="card-bg rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-gray-800 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9M3 12a9 9 0 009 9"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Infraestrutura Local e Segura</h3>
+                        <p class="text-gray-400">
+                            Projetamos e implementamos seu ambiente de desenvolvimento local com <b class="text-gray-200">Proxmox</b>, garantindo acesso seguro via web com <b class="text-gray-200">Guacamole</b>, proteção com <b class="text-gray-200">Firewall/Proxy</b> e otimização com <b class="text-gray-200">Cloudflare</b>.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="card-bg rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-gray-800 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Ambiente DevOps Moderno</h3>
+                        <p class="text-gray-400">
+                            Estruture um fluxo de trabalho eficiente com <b class="text-gray-200">GitLab</b> para CI/CD e repositórios, e potencialize a produtividade do seu time com o editor assistido por IA <b class="text-gray-200">Cursor</b>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech" class="py-20 bg-black/30">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Tecnologias que Dominamos</h2>
+                    <p class="text-gray-400 mt-2">As melhores ferramentas para garantir seu sucesso.</p>
+                </div>
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-12">
+                    <span class="text-lg font-medium text-gray-400">ComfyUI</span>
+                    <span class="text-lg font-medium text-gray-400">n8n</span>
+                    <span class="text-lg font-medium text-gray-400">Ollama API</span>
+                    <span class="text-lg font-medium text-gray-400">Proxmox</span>
+                    <span class="text-lg font-medium text-gray-400">GitLab</span>
+                    <span class="text-lg font-medium text-gray-400">Cursor</span>
+                    <span class="text-lg font-medium text-gray-400">Guacamole</span>
+                    <span class="text-lg font-medium text-gray-400">Cloudflare</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 section-glow">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Sobre a Televatec</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Na Televatec, acreditamos que o futuro da inovação está na autonomia. Nossa missão é desmistificar tecnologias complexas e dar às empresas o poder de criar soluções de IA em seus próprios termos e em sua própria infraestrutura. Reduzimos a dependência de serviços de nuvem caros, aumentamos a segurança dos dados e capacitamos equipes a inovar com mais rapidez e liberdade.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Vamos Conversar?</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Envie-nos uma mensagem e descubra como podemos transformar sua empresa.</p>
+                </div>
+                <div class="max-w-2xl mx-auto card-bg p-8 md:p-12 rounded-2xl">
+                    <form action="#" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Seu Nome</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Seu Email</label>
+                                <input type="email" id="email" name="email" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-sky-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-600 transition-all duration-300 shadow-lg shadow-sky-500/20">
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2024 Televatec. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu on link click
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
